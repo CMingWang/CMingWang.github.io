@@ -79,6 +79,60 @@
       </v-col>
 
       <v-col class="mb-5" cols="12">
+        <h2 class="headline font-weight-bold mb-3">官司判決</h2>
+
+        <v-row justify="center">
+          <v-spacer></v-spacer>
+
+          <v-slide initPos="left-to-right">
+            <v-card elevation="24" color="success">
+              <v-card-title>
+                中壢簡易庭 105 年壢小字第 840 號民事判決
+              </v-card-title>
+              <v-card-subtitle> 民國 105 年 10 月 24 日 </v-card-subtitle>
+              <v-card-text>
+                清償借款 <strong><em>$21,273</em></strong>
+              </v-card-text>
+              <v-card-actions class="justify-center">
+                <v-btn
+                  href="https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=3b495c674b1180f6d6d2fc7f465b29f6&sort=DS&ot=in"
+                  target="_blank"
+                  color="info"
+                >
+                  連結
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-slide>
+
+          <v-spacer></v-spacer>
+
+          <v-slide initPos="right-to-left">
+            <v-card elevation="24" color="warning">
+              <v-card-title>
+                臺灣桃園地方法院 109 年促字第 2928 號民事其他文書
+              </v-card-title>
+              <v-card-subtitle> 民國 109 年 12 月 22 日 </v-card-subtitle>
+              <v-card-text>
+                支付命令 <strong><em>$1088</em></strong>
+              </v-card-text>
+              <v-card-actions class="justify-center">
+                <v-btn
+                  href="https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=ca65f789e71832f3e38a8ff246d202de&sort=DS&ot=in"
+                  target="_blank"
+                  color="error"
+                >
+                  連結
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-slide>
+
+          <v-spacer></v-spacer>
+        </v-row>
+      </v-col>
+
+      <v-col class="mb-5" cols="12">
         <h2 class="headline font-weight-bold mb-3"></h2>
 
         <v-row justify="center"> </v-row>
