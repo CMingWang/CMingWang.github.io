@@ -32,43 +32,50 @@
                   <v-list-item-title v-html="itm.txt"></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
-            </v-list-item-group> </v-list
-        ></v-row>
+            </v-list-item-group>
+          </v-list>
+        </v-row>
       </v-col>
 
       <v-col class="mb-5" cols="5">
         <h2 class="headline font-weight-bold mb-3">經典噁圖</h2>
         <p class="subheading font-weight-regular">下列各圖極為傷眼，請小心</p>
 
-        <v-row justify="center">
-          <v-lazy>
-            <v-carousel height="auto">
-              <v-carousel-item
-                v-for="i in photos"
-                :key="i"
-                :src="require(`../assets/${i}.jpg`)"
-              ></v-carousel-item>
-            </v-carousel>
-          </v-lazy>
-        </v-row>
+        <v-slide initPos="bottom-to-top">
+          <v-row justify="center">
+            <v-lazy>
+              <v-carousel height="auto">
+                <v-carousel-item
+                  v-for="i in photos"
+                  :key="i"
+                  :src="require(`../assets/${i}.jpg`)"
+                ></v-carousel-item>
+              </v-carousel>
+            </v-lazy>
+          </v-row>
+        </v-slide>
       </v-col>
 
       <v-col class="mb-5" cols="12">
         <h2 class="headline font-weight-bold mb-3">求學經歷</h2>
-        <p class="subheading font-weight-regular">轉學又轉系，整整讀惹八年大學啊 ...</p>
+        <p class="subheading font-weight-regular">
+          轉學又轉系，整整讀惹八年大學啊 ...
+        </p>
 
-        <v-row justify="center">
-          <v-timeline>
-            <v-timeline-item
-              v-for="(school, i) in schools"
-              :key="i"
-              :color="school.clr"
-              :class="i & 1 ? 'text-right' : 'text-left'"
-            >
-              {{ school.txt }}
-            </v-timeline-item>
-          </v-timeline>
-        </v-row>
+        <v-slide initPos="bottom-to-top">
+          <v-row justify="center">
+            <v-timeline>
+              <v-timeline-item
+                v-for="(school, i) in schools"
+                :key="i"
+                :color="school.clr"
+                :class="i & 1 ? 'text-right' : 'text-left'"
+              >
+                {{ school.txt }}
+              </v-timeline-item>
+            </v-timeline>
+          </v-row>
+        </v-slide>
       </v-col>
 
       <v-col class="mb-5" cols="12">
@@ -81,8 +88,14 @@
 </template>
 
 <script>
+import SlideOnScroll from "../../node_modules/vue-slide-onscroll/src/components/TheSlideOnScroll";
+
 export default {
   name: "Main",
+
+  components: {
+    "v-slide": SlideOnScroll,
+  },
 
   data: () => ({
     info: [
@@ -112,7 +125,7 @@ export default {
 
   computed: {
     photos() {
-      return [...Array(10).keys()].sort(() => Math.random() - 0.5);
+      return [...Array(11).keys()].sort(() => Math.random() - 0.5);
     },
   },
 };
