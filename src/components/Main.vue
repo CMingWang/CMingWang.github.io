@@ -15,7 +15,7 @@
           散戶中的霸主 - 王希銘 - 成功致富又快樂
         </h1>
 
-        <p class="subheading font-weight-regular">油脂、浪漫 Na!!</p>
+        <p class="subheading font-weight-regular">油脂、浪漫、溫馨 Na!!</p>
       </v-col>
 
       <v-col class="mb-5" cols="12">
@@ -41,42 +41,31 @@
         <p class="subheading font-weight-regular">下列各圖極為傷眼，請小心</p>
 
         <v-row justify="center">
-          <v-carousel height="auto">
-            <v-carousel-item
-              v-for="i in 10"
-              :key="i"
-              :src="require(`../assets/${i}.jpg`)"
-            ></v-carousel-item>
-          </v-carousel>
+          <v-lazy>
+            <v-carousel height="auto">
+              <v-carousel-item
+                v-for="i in photos"
+                :key="i"
+                :src="require(`../assets/${i}.jpg`)"
+              ></v-carousel-item>
+            </v-carousel>
+          </v-lazy>
         </v-row>
       </v-col>
 
       <v-col class="mb-5" cols="12">
         <h2 class="headline font-weight-bold mb-3">求學經歷</h2>
-        <p class="subheading font-weight-regular">整整讀惹八年大學啊 ...</p>
+        <p class="subheading font-weight-regular">轉學又轉系，整整讀惹八年大學啊 ...</p>
 
         <v-row justify="center">
           <v-timeline>
-            <v-timeline-item color="deep-purple" class="text-left">
-              富台國小
-            </v-timeline-item>
-            <v-timeline-item color="indigo" class="text-right">
-              龍岡國中
-            </v-timeline-item>
-            <v-timeline-item color="cyan" class="text-left">
-              陽明高中（桃園）
-            </v-timeline-item>
-            <v-timeline-item color="lime" class="text-right">
-              世新大學財金系 <br />
-              （指考）
-            </v-timeline-item>
-            <v-timeline-item color="amber" class="text-left">
-              中原大學特教系 <br />
-              （轉學）
-            </v-timeline-item>
-            <v-timeline-item color="deep-orange" class="text-right">
-              中原大學企管系 <br />
-              （轉系）
+            <v-timeline-item
+              v-for="(school, i) in schools"
+              :key="i"
+              :color="school.clr"
+              :class="i & 1 ? 'text-right' : 'text-left'"
+            >
+              {{ school.txt }}
             </v-timeline-item>
           </v-timeline>
         </v-row>
@@ -111,6 +100,20 @@ export default {
       { ico: "mdi-ruler", txt: "168cm" },
       { ico: "mdi-weight", txt: "100 ~ 110kg" },
     ],
+    schools: [
+      { clr: "deep-purple", txt: "富台國小" },
+      { clr: "indigo", txt: "龍岡國中" },
+      { clr: "cyan", txt: "陽明高中（桃園）" },
+      { clr: "lime", txt: "世新大學財金系" },
+      { clr: "amber", txt: "中原大學特教系" },
+      { clr: "deep-orange", txt: "中原大學企管系" },
+    ],
   }),
+
+  computed: {
+    photos() {
+      return [...Array(10).keys()].sort(() => Math.random() - 0.5);
+    },
+  },
 };
 </script>
