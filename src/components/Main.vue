@@ -22,7 +22,7 @@
       </v-col>
 
       <v-col class="mb-5" cols="12">
-        <v-parallax :src="require('../assets/parallax.jpg')" jumbotron>
+        <v-parallax :src="require('../assets/parallax.jpg')">
           <v-row align="center" justify="center">
             <v-col class="text-center" cols="12">
               <h2 class="headline font-weight-bold mb-3">基本資料</h2>
