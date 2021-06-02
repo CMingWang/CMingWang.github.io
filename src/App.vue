@@ -1,6 +1,9 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
+      <v-avatar class="mx-3">
+        <v-img :src="require('./assets/logo.jpg')" contain />
+      </v-avatar>
       <v-toolbar-title>散戶中的霸主 - 王希銘 - 成功致富又快樂</v-toolbar-title>
     </v-app-bar>
 
