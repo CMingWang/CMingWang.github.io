@@ -162,7 +162,7 @@ export default {
           '<a href="https://goo.gl/maps/HXrXA5pT6UPCbkBx9" class="teal--text text--accent-2">320 桃園市中壢區龍川二街 134 號</a> ',
       },
       { ico: "needle", txt: "B 型" },
-      { ico: "motorbike", txt: "KKP - 0988" },
+      { ico: "motorbike", txt: "MKP - 0988" },
       { ico: "id-card", txt: "H123345500" },
       { ico: "bank", txt: "808 1333979126112" },
     ],
