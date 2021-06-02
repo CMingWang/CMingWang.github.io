@@ -19,8 +19,7 @@
         <p class="subheading font-weight-regular">
           王希銘，台灣桃園中壢人，自稱為唐唐症症的中囯人，是台灣網路知名人物，發跡於哈哈母特。祖父王漢樁國軍上校退役，其父王建勛即
           Kevin。曾養一隻狗，名為小翠兒，待遇非常惡劣，走得十分痛苦。經常在網路上消費前女友
-          Nana,
-          隨機騷擾陌生女網友的紀錄罄竹難書。
+          Nana, 隨機騷擾陌生女網友的紀錄罄竹難書。
           為了滿足他暴食的慾望，屢次以各種理由借錢、騙錢。
           曾經在家樂福蔬果課、威尼斯影城及若干證券行服務，但都因故被解雇。
           住所因大門口長著一棵大樹而被戲稱為樹屋，原本是奶奶的，後來被叔叔買下但霸主仍然繼續住，還騙叔叔說剛結束三年感情會努力工作買回來。
@@ -113,6 +112,25 @@
             </v-slide>
           </v-col>
         </v-row>
+      </v-col>
+
+      <v-col class="mb-5" cols="12">
+        <h2 class="headline font-weight-bold mb-3">交通罰單</h2>
+
+        <v-slide initPos="bottom-to-top">
+          <v-row justify="center">
+            <v-data-table
+              :headers="tab_headers"
+              :items="penalties"
+              :items-per-page="10"
+              class="elevation-24"
+            >
+              <template v-slot:item.date="{ item }">
+                {{ format(item.date) }}
+              </template>
+            </v-data-table>
+          </v-row>
+        </v-slide>
       </v-col>
 
       <v-col class="mb-5" cols="12">
@@ -209,12 +227,71 @@ export default {
       { title: "唐寶耍狠", id: "_Yn2EbdH0bg", clr: "error" },
       { title: "霸主女裝性感舞", id: "RCVndNIdrB0", clr: "amber" },
     ],
+    tab_headers: [
+      { text: "日期", value: "date" },
+      { text: "事由", value: "detail" },
+      { text: "金額", value: "price" },
+    ],
+    penalties: [
+      {
+        date: new Date(2016, 9, 20),
+        detail: "汽車未領用有效牌照於道路停車者",
+        price: 5400,
+      },
+      {
+        date: new Date(2017, 7, 16),
+        detail: "駕車行經有燈光號誌管制之交岔路口闖紅燈",
+        price: 2700,
+      },
+      {
+        date: new Date(2019, 7, 26),
+        detail: "在禁止臨時停車處所停車",
+        price: 900,
+      },
+      {
+        date: new Date(2020, 2, 11),
+        detail: "在設有禁止臨時停車標線處所臨時停車",
+        price: 600,
+      },
+      {
+        date: new Date(2020, 3, 24),
+        detail: "駕車行經有燈光號誌管制之交岔路口闖紅燈",
+        price: 2700,
+      },
+      {
+        date: new Date(2020, 3, 24),
+        detail:
+          "投保義務人未依強制汽車責任保險法訂立契約",
+        price: 3000,
+      },
+      {
+        date: new Date(2020, 8, 7),
+        detail: "在設有禁止臨時停車標線處所臨時停車",
+        price: 600,
+      },
+      {
+        date: new Date(2020, 8, 11),
+        detail: "駕車行經有燈光號誌管制之交岔路口闖紅燈",
+        price: 2700,
+      },
+      {
+        date: new Date(2020, 9, 7),
+        detail: "在禁止臨時停車處所停車",
+        price: 900,
+      },
+    ],
   }),
 
   computed: {
     photos() {
       return [...Array(13).keys()].sort(() => Math.random() - 0.5);
     },
+  },
+
+  methods: {
+    format (x) {
+      return x.getMonth() + "/" + x.getDate() + ", " + x.getFullYear()
+    }
   },
 };
 </script>
