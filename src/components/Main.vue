@@ -36,7 +36,11 @@
               <v-row justify="center">
                 <v-list color="transparent">
                   <v-list-item-group color="primary lighten-3">
-                    <v-list-item v-for="(itm, i) in info" :key="i">
+                    <v-list-item
+                      v-for="(itm, i) in info"
+                      :key="i"
+                      @click="copy($event.target)"
+                    >
                       <v-list-item-icon>
                         <v-icon v-text="'mdi-' + itm.ico"></v-icon>
                       </v-list-item-icon>
@@ -159,6 +163,16 @@
 
         <v-row justify="center"> </v-row>
       </v-col>
+
+      <v-snackbar v-model="snackbar">
+        Copied to clipboard!!
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="danger" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-row>
   </v-container>
 </template>
@@ -178,13 +192,11 @@ export default {
       { ico: "calendar", txt: "01/08, 1986" },
       {
         ico: "cellphone",
-        txt:
-          '<a href="tel:0980497079" class="teal--text text--accent-2">0980 497 079</a>',
+        txt: '<a href="tel:0980497079" class="teal--text text--accent-2">0980 497 079</a>',
       },
       {
         ico: "home",
-        txt:
-          '<a href="https://goo.gl/maps/HXrXA5pT6UPCbkBx9" class="teal--text text--accent-2">320 桃園市中壢區龍川二街 134 號</a> ',
+        txt: '<a href="https://goo.gl/maps/HXrXA5pT6UPCbkBx9" class="teal--text text--accent-2">320 桃園市中壢區龍川二街 134 號</a> ',
       },
       { ico: "needle", txt: "B 型" },
       { ico: "motorbike", txt: "MKP - 0988" },
@@ -206,8 +218,7 @@ export default {
         clr: "success",
         clr_btn: "info",
         txt: "清償借款 <strong><em>$21,273</em></strong>",
-        link:
-          "https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=3b495c674b1180f6d6d2fc7f465b29f6&sort=DS&ot=in",
+        link: "https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=3b495c674b1180f6d6d2fc7f465b29f6&sort=DS&ot=in",
       },
       {
         title: "臺灣桃園地方法院 109 年促字第 2928 號民事其他文書",
@@ -215,8 +226,7 @@ export default {
         txt: "支付命令 <strong><em>$1088</em></strong>",
         clr: "warning",
         clr_btn: "error",
-        link:
-          "https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=ca65f789e71832f3e38a8ff246d202de&sort=DS&ot=in",
+        link: "https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=ca65f789e71832f3e38a8ff246d202de&sort=DS&ot=in",
       },
     ],
     youtubes: [
@@ -260,8 +270,7 @@ export default {
       },
       {
         date: new Date(2020, 3, 24),
-        detail:
-          "投保義務人未依強制汽車責任保險法訂立契約",
+        detail: "投保義務人未依強制汽車責任保險法訂立契約",
         price: 3000,
       },
       {
@@ -280,6 +289,7 @@ export default {
         price: 900,
       },
     ],
+    snackbar: null,
   }),
 
   computed: {
@@ -289,9 +299,15 @@ export default {
   },
 
   methods: {
-    format (x) {
-      return x.getMonth() + "/" + x.getDate() + ", " + x.getFullYear()
-    }
+    format(x) {
+      return x.getMonth() + "/" + x.getDate() + ", " + x.getFullYear();
+    },
+    copy(x) {
+      window.getSelection().selectAllChildren(x);
+      document.execCommand("copy");
+      this.snackbar = true;
+      window.getSelection().empty();
+    },
   },
 };
 </script>
