@@ -67,8 +67,10 @@
                 <v-carousel-item
                   v-for="i in photos"
                   :key="i"
-                  :src="require(`../assets/${i}.jpg`)"
-                ></v-carousel-item>
+                  eager
+                >
+                  <v-img :src="require(`../assets/${i}.jpg`)" height="100%" eager/>
+                </v-carousel-item>
               </v-carousel>
             </v-col>
           </v-row>
@@ -178,7 +180,7 @@
 </template>
 
 <script>
-import SlideOnScroll from "../../node_modules/vue-slide-onscroll/src/components/TheSlideOnScroll";
+import SlideOnScroll from "vue-slide-onscroll/src/components/TheSlideOnScroll";
 
 export default {
   name: "Main",
@@ -224,7 +226,7 @@ export default {
         title: "臺灣桃園地方法院 109 年促字第 2928 號民事其他文書",
         subtitle: "民國 109 年 12 月 22 日",
         txt: "支付命令 <strong><em>$1088</em></strong>",
-        clr: "warning",
+        clr: "cyan",
         clr_btn: "error",
         link: "https://law.judicial.gov.tw/FJUD/data.aspx?ro=0&q=ca65f789e71832f3e38a8ff246d202de&sort=DS&ot=in",
       },

@@ -3,9 +3,15 @@ import Vuetify from 'vuetify/lib/framework';
 
 import colors from 'vuetify/lib/util/colors';
 
+import zhHant from 'vuetify/es5/locale/zh-Hant'
+
 Vue.use(Vuetify);
 
 export default new Vuetify({
+    lang: {
+        locales: { zhHant },
+        current: 'zhHant',
+    },
     theme: {
         dark: true,
         default: 'dark',
