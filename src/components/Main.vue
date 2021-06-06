@@ -67,8 +67,10 @@
                 <v-carousel-item
                   v-for="i in photos"
                   :key="i"
-                  :src="require(`../assets/${i}.jpg`)"
-                ></v-carousel-item>
+                  eager
+                >
+                  <v-img :src="require(`../assets/${i}.jpg`)" height="100%" eager/>
+                </v-carousel-item>
               </v-carousel>
             </v-col>
           </v-row>
