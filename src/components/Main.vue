@@ -178,7 +178,7 @@
 </template>
 
 <script>
-import SlideOnScroll from "../../node_modules/vue-slide-onscroll/src/components/TheSlideOnScroll";
+import SlideOnScroll from "vue-slide-onscroll/src/components/TheSlideOnScroll";
 
 export default {
   name: "Main",
